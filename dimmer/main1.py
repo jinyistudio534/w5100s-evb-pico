@@ -182,7 +182,7 @@ async def wifi_connect(SSID: str='jinyistudio', pwd: str='25433692', attempts: i
 
     return wifi
 
-def w5100s_connect()-> network.WIZNET5K:
+async def w5100s_connect()-> network.WIZNET5K:
     spi = SPI(0,2_000_000, mosi=Pin(19),miso=Pin(16),sck=Pin(18))
     nic = network.WIZNET5K(spi,Pin(17),Pin(20)) #spi,cs,reset pin
     nic.active(True)
@@ -195,16 +195,17 @@ def w5100s_connect()-> network.WIZNET5K:
     print('IP address :', nic.ifconfig()) 
 
     while not nic.isconnected():
-        utime.sleep(1)
-        print(nic.regs())
+        await a.sleep(1)
+        #print(nic.regs())
 
-    print(nic.ifconfig())  
+    if nic.isconnected():
+        print("ifconfig: {}".format(nic.ifconfig()))
+    else:
+        print("WIZNET5K not connected.")
+     
     
     return nic    
    
-
-
-
 # ------------------------------------------------------
 # Task for read loop
 async def read_loop():
@@ -214,12 +215,12 @@ async def read_loop():
 
     # may be, it
     #wifi = await wifi_connect(config["wifi"]["SSID"], config["wifi"]["password"])
-    wifi = w5100s_connect()
+    wifi = await w5100s_connect()
     while True:
         gc.collect()
         if not wifi.isconnected():
             #wifi = await wifi_connect(config["wifi"]["SSID"], config["wifi"]["password"])
-            wifi = w5100s_connect()
+            wifi = await w5100s_connect()
             if not wifi.isconnected():
                 await a.sleep_ms(config["wifi"]["delay_in_msec"])
                 continue
