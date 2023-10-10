@@ -1,0 +1,513 @@
+[
+    {
+        "id": "179f76db88edd1cc",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7b0bc0916f767c3e",
+        "type": "junction",
+        "z": "179f76db88edd1cc",
+        "x": 500,
+        "y": 200,
+        "wires": [
+            [
+                "a39dfedde536cc74"
+            ]
+        ]
+    },
+    {
+        "id": "466ccb1b18143926",
+        "type": "serial request",
+        "z": "179f76db88edd1cc",
+        "name": "",
+        "serial": "8e9a02fa66f6e67e",
+        "x": 900,
+        "y": 440,
+        "wires": [
+            [
+                "0f7dcedcb73ed321"
+            ]
+        ]
+    },
+    {
+        "id": "0f7dcedcb73ed321",
+        "type": "debug",
+        "z": "179f76db88edd1cc",
+        "name": "debug 38",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1025,
+        "y": 440,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "5b88b5f959933033",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "RED*",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "RED",
+        "payloadType": "str",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "f036d80d20d9e7ca"
+            ]
+        ]
+    },
+    {
+        "id": "6be5f3c8e6981c79",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "GREEN",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "GRE",
+        "payloadType": "str",
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "f036d80d20d9e7ca"
+            ]
+        ]
+    },
+    {
+        "id": "62f22c702dadea0f",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "BLUE",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "BLU",
+        "payloadType": "str",
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "f036d80d20d9e7ca"
+            ]
+        ]
+    },
+    {
+        "id": "f036d80d20d9e7ca",
+        "type": "function",
+        "z": "179f76db88edd1cc",
+        "name": "function 31",
+        "func": "var count=context.get('count') || 0;\ncount = count+1;\nif(count>9999) count=0;\ncontext.set('count',count);\n\nmsg.count = count;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 425,
+        "y": 320,
+        "wires": [
+            [
+                "a39dfedde536cc74"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "38e6d58938a2cc8e",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "Th+",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Th+",
+        "payloadType": "str",
+        "x": 210,
+        "y": 460,
+        "wires": [
+            [
+                "de0d1fc85a7f61f4"
+            ]
+        ]
+    },
+    {
+        "id": "de0d1fc85a7f61f4",
+        "type": "function",
+        "z": "179f76db88edd1cc",
+        "name": "function 32",
+        "func": "// msg.payload = Buffer.from('123',\"ascii\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 395,
+        "y": 500,
+        "wires": [
+            [
+                "a39dfedde536cc74"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "d73ca5733e3a8fd2",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "Th-",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Th-",
+        "payloadType": "str",
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "de0d1fc85a7f61f4"
+            ]
+        ]
+    },
+    {
+        "id": "62d021d780c5422e",
+        "type": "debug",
+        "z": "179f76db88edd1cc",
+        "name": "debug 39",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 735,
+        "y": 400,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "61bca8b54581eaf7",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "Point*",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "PO",
+        "payloadType": "str",
+        "x": 210,
+        "y": 600,
+        "wires": [
+            [
+                "fba91544c745b80f"
+            ]
+        ]
+    },
+    {
+        "id": "ecbdd32b4f5f07fd",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "Circle",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "CL",
+        "payloadType": "str",
+        "x": 210,
+        "y": 660,
+        "wires": [
+            [
+                "fba91544c745b80f"
+            ]
+        ]
+    },
+    {
+        "id": "fba91544c745b80f",
+        "type": "function",
+        "z": "179f76db88edd1cc",
+        "name": "function 33",
+        "func": "// msg.payload = Buffer.from('123',\"ascii\")\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 395,
+        "y": 620,
+        "wires": [
+            [
+                "a39dfedde536cc74"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "a39dfedde536cc74",
+        "type": "function",
+        "z": "179f76db88edd1cc",
+        "name": "function 34",
+        "func": "// msg.payload = Buffer.from('123',\"ascii\")\nvar device=flow.get(\"device\");\nif(msg.topic==\"toggle\") {\n    device = device==1?2:1;\n}\nflow.set(\"device\",device);\nnode.status({text:device==1?\"COM\":\"WS\"});\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nflow.set('device',2);\nnode.status({text:2});",
+        "finalize": "",
+        "libs": [],
+        "x": 575,
+        "y": 480,
+        "wires": [
+            [
+                "62d021d780c5422e",
+                "8362bae213dae9b7"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "4c70ad24f7beae8e",
+        "type": "inject",
+        "z": "179f76db88edd1cc",
+        "name": "toggle",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.5",
+        "topic": "toggle",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "7b0bc0916f767c3e"
+            ]
+        ]
+    },
+    {
+        "id": "a04564208f0a0158",
+        "type": "websocket in",
+        "z": "179f76db88edd1cc",
+        "name": "",
+        "server": "6547737b8083f08b",
+        "client": "",
+        "x": 480,
+        "y": 100,
+        "wires": [
+            [
+                "2627616eaa8bce14",
+                "eab28972dede40b7"
+            ]
+        ]
+    },
+    {
+        "id": "2627616eaa8bce14",
+        "type": "debug",
+        "z": "179f76db88edd1cc",
+        "name": "debug 40",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 655,
+        "y": 80,
+        "wires": [],
+        "l": false
+    },
+    {
+        "id": "c9f6e745add46a0b",
+        "type": "websocket out",
+        "z": "179f76db88edd1cc",
+        "name": "",
+        "server": "6547737b8083f08b",
+        "client": "",
+        "x": 940,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "8362bae213dae9b7",
+        "type": "switch",
+        "z": "179f76db88edd1cc",
+        "name": "",
+        "property": "device",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 750,
+        "y": 480,
+        "wires": [
+            [
+                "466ccb1b18143926"
+            ],
+            [
+                "c9f6e745add46a0b"
+            ]
+        ],
+        "outputLabels": [
+            "COM",
+            "WS"
+        ]
+    },
+    {
+        "id": "eab28972dede40b7",
+        "type": "function",
+        "z": "179f76db88edd1cc",
+        "name": "function 35",
+        "func": "var n1 = \"btn1\".indexOf(msg.payload);\nvar n2 = 'btn2'.indexOf(msg.payload);\nif(n1==0 || n2==0) {\n    var rgbs = ['RED','GRE','BLU'];\n    var rgbx = flow.get('rgbx') || 0;\n    if(n1==0) {\n        rgbx = rgbx+1>2 ? 0 : rgbx+1;\n    }\n    if(n2==0) {\n        rgbx = rgbx-1>=0 ? rgbx-1 : 2;\n    }\n    msg.payload = rgbs[rgbx];\n    flow.set(\"rgbx\",rgbx);\n    node.status({text:msg.payload});\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 655,
+        "y": 160,
+        "wires": [
+            [
+                "7f6255b1a1367c65"
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "7f6255b1a1367c65",
+        "type": "link out",
+        "z": "179f76db88edd1cc",
+        "name": "link out 28",
+        "mode": "link",
+        "links": [
+            "2d8cca117ff63534"
+        ],
+        "x": 725,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "2d8cca117ff63534",
+        "type": "link in",
+        "z": "179f76db88edd1cc",
+        "name": "link in 9",
+        "links": [
+            "7f6255b1a1367c65"
+        ],
+        "x": 355,
+        "y": 260,
+        "wires": [
+            [
+                "f036d80d20d9e7ca"
+            ]
+        ]
+    },
+    {
+        "id": "8e9a02fa66f6e67e",
+        "type": "serial-port",
+        "serialport": "COM20",
+        "serialbaud": "38400",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "0x0a",
+        "responsetimeout": "3000"
+    },
+    {
+        "id": "6547737b8083f08b",
+        "type": "websocket-listener",
+        "path": "test/esp32",
+        "wholemsg": "true"
+    }
+]
